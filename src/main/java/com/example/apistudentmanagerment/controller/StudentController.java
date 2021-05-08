@@ -3,6 +3,7 @@ package com.example.apistudentmanagerment.controller;
 import com.example.apistudentmanagerment.dto.StudentDto;
 import com.example.apistudentmanagerment.service.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
@@ -13,6 +14,10 @@ public class StudentController {
 
     @Autowired
     private StudentService studentService;
+
+    @Autowired
+    @Qualifier("studentServiceV2") // specific bean name
+    private StudentService studentServiceV2;
 
     public final ArrayList<StudentDto> students = new ArrayList<>();
 
@@ -113,5 +118,30 @@ public class StudentController {
         return studentService.deleteStudent(id);
     }
 
+
+    @GetMapping("v3/students")
+    public List<StudentDto> findAllStudentV3() {
+        // Check permission
+        return studentServiceV2.findAllStudent();
+    }
+
+    @PostMapping("v3/students/add")
+    public StudentDto addStudentV3(@RequestBody StudentDto dto) throws Exception {
+        // Check permission
+        return studentServiceV2.create(dto);
+    }
+
+    @PostMapping("v3/students/update")
+    public StudentDto updateStudentV3(@RequestParam("id") Long id,
+                                    @RequestBody StudentDto dto) throws Exception {
+        // Check permission
+        return studentServiceV2.updateStudent(id, dto);
+    }
+
+    @GetMapping("v3/students/delete") // risk
+    public StudentDto deleteStudentV3(@RequestParam("id") Long id) throws Exception {
+        // Check permission
+        return studentServiceV2.deleteStudent(id);
+    }
 }
 

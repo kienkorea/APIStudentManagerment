@@ -2,16 +2,18 @@ package com.example.apistudentmanagerment.service.impl;
 
 import com.example.apistudentmanagerment.dto.StudentDto;
 import com.example.apistudentmanagerment.service.StudentService;
-import org.springframework.beans.BeanUtils;
+import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+import java.util.TreeMap;
 import java.util.concurrent.atomic.LongAdder;
 
-@Service
+@Primary
+@Service(value = "studentService")
 public class StudentServiceImpl implements StudentService {
 
     // Simulator database
@@ -26,8 +28,12 @@ public class StudentServiceImpl implements StudentService {
 
         students.forEach((Long key, StudentDto stdto) -> {
             StudentDto student = new StudentDto();
-            BeanUtils.copyProperties(stdto, student);
+
+            student.setName(stdto.getName());
+            student.setAddress(stdto.getAddress());
+            student.setAge(stdto.getAge());
             student.setId(key);
+
             studentDtoResult.add(student);
         });
 

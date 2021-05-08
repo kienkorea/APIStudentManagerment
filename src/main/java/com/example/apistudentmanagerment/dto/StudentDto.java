@@ -7,6 +7,8 @@ public class StudentDto {
     private int age;
     private String address;
 
+    private long id;
+
     public StudentDto(){
 
     }
@@ -38,5 +40,13 @@ public class StudentDto {
 
     public void setAddress(String address) {
         this.address = address;
+    }
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
     }
 }

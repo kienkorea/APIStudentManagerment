@@ -1,12 +1,19 @@
 package com.example.apistudentmanagerment.controller;
 
 import com.example.apistudentmanagerment.dto.StudentDto;
+import com.example.apistudentmanagerment.service.StudentService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
+import java.util.List;
 
 @RestController
 public class StudentController {
+
+    @Autowired
+    private StudentService studentService;
+
     public final ArrayList<StudentDto> students = new ArrayList<>();
 
     // Post co the lam duoc giong Get, nhung ma Get khong the lam duoc giong nhu Post
@@ -80,5 +87,31 @@ public class StudentController {
         return students;
 
     }
+
+    @GetMapping("v2/students")
+    public List<StudentDto> findAllStudent() {
+        // Check permission
+        return studentService.findAllStudent();
+    }
+
+    @PostMapping("v2/students/add")
+    public StudentDto addStudent(@RequestBody StudentDto dto) throws Exception {
+        // Check permission
+        return studentService.create(dto);
+    }
+
+    @PostMapping("v2/students/update")
+    public StudentDto updateStudent(@RequestParam("id") Long id,
+                                    @RequestBody StudentDto dto) throws Exception {
+        // Check permission
+        return studentService.updateStudent(id, dto);
+    }
+
+    @GetMapping("v2/students/delete") // risk
+    public StudentDto deleteStudent(@RequestParam("id") Long id) throws Exception {
+        // Check permission
+        return studentService.deleteStudent(id);
+    }
+
 }
 

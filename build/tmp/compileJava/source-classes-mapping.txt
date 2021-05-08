@@ -1,0 +1,6 @@
+com/example/apistudentmanagerment/dto/StudentDto.java
+ com.example.apistudentmanagerment.dto.StudentDto
+com/example/apistudentmanagerment/ApiStudentManagermentApplication.java
+ com.example.apistudentmanagerment.ApiStudentManagermentApplication
+com/example/apistudentmanagerment/controller/StudentController.java
+ com.example.apistudentmanagerment.controller.StudentController

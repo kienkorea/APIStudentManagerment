@@ -1,0 +1,2 @@
+com/example/apistudentmanagerment/ApiStudentManagermentApplicationTests.java
+ com.example.apistudentmanagerment.ApiStudentManagermentApplicationTests

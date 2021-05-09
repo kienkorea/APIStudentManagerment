@@ -3,6 +3,7 @@ package com.example.apistudentmanagerment.service.impl;
 import com.example.apistudentmanagerment.dto.StudentDto;
 import com.example.apistudentmanagerment.service.StudentService;
 import org.springframework.context.annotation.Primary;
+import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
@@ -12,7 +13,6 @@ import java.util.Map;
 import java.util.TreeMap;
 import java.util.concurrent.atomic.LongAdder;
 
-@Primary
 @Service(value = "studentService")
 public class StudentServiceImpl implements StudentService {
 

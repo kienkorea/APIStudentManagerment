@@ -1,0 +1,7 @@
+DROP TABLE IF EXISTS STUDENT;
+CREATE TABLE STUDENT (
+    id int AUTO_INCREMENT  PRIMARY KEY,
+    name VARCHAR(50) NOT NULL,
+    age INT(3) NOT NULL,
+    address varchar(250)
+);

@@ -1,19 +1,28 @@
-package com.example.apistudentmanagerment.dto;
+package com.example.apistudentmanagerment.entity;
 
+import javax.persistence.*;
 
-// Data Transfer Object
-// JPA
-public class StudentDto {
+@Entity
+@Table(name = "student")
+public class StudentEntity {
+    @Column
     private String name;
+
+    @Column
     private int age;
+
+    @Column
     private String address;
 
+    @Id
+    @Column
+    @GeneratedValue
     private long id;
 
-    public StudentDto(){
+    public StudentEntity(){
 
     }
-    public StudentDto(String name, int age, String address) {
+    public StudentEntity(String name, int age, String address) {
         this.name = name;
         this.age = age;
         this.address = address;

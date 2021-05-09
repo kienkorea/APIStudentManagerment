@@ -19,6 +19,10 @@ public class StudentController {
     @Qualifier("studentServiceV2") // specific bean name
     private StudentService studentServiceV2;
 
+    @Autowired
+    @Qualifier("studentServiceV3") // specific bean name
+    private StudentService studentServiceV3;
+
     public final ArrayList<StudentDto> students = new ArrayList<>();
 
     // Post co the lam duoc giong Get, nhung ma Get khong the lam duoc giong nhu Post
@@ -29,7 +33,6 @@ public class StudentController {
 
     @PostMapping(value = "/greeting")
     public String greeting(@RequestBody String name) {
-
         return "Hello " + name;
     }
 
@@ -142,6 +145,31 @@ public class StudentController {
     public StudentDto deleteStudentV3(@RequestParam("id") Long id) throws Exception {
         // Check permission
         return studentServiceV2.deleteStudent(id);
+    }
+
+    @GetMapping("v4/students")
+    public List<StudentDto> findAllStudentV4() {
+        // Check permission
+        return studentServiceV3.findAllStudent();
+    }
+
+    @PostMapping("v4/students/add")
+    public StudentDto addStudentV4(@RequestBody StudentDto dto) throws Exception {
+        // Check permission
+        return studentServiceV3.create(dto);
+    }
+
+    @PostMapping("v4/students/update")
+    public StudentDto updateStudentV4(@RequestParam("id") Long id,
+                                      @RequestBody StudentDto dto) throws Exception {
+        // Check permission
+        return studentServiceV3.updateStudent(id, dto);
+    }
+
+    @GetMapping("v4/students/delete") // risk
+    public StudentDto deleteStudentV4(@RequestParam("id") Long id) throws Exception {
+        // Check permission
+        return studentServiceV3.deleteStudent(id);
     }
 }
 

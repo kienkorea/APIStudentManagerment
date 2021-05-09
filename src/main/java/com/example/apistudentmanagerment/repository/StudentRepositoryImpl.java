@@ -20,6 +20,9 @@ public class StudentRepositoryImpl implements StudentRepository{
 
     @Override
     public List<Student> findAll() {
+        // SELECT ... FROM TABLE WHERE
+        // MAP result from db to class entity there is Student.class
+        // Return.
         return new ArrayList<>(students.values());
     }
 
@@ -49,7 +52,6 @@ public class StudentRepositoryImpl implements StudentRepository{
         if (student == null) {
             throw new Exception("Entity not found!");
         }
-
         students.remove(id);
 
         return student;
@@ -62,7 +64,6 @@ public class StudentRepositoryImpl implements StudentRepository{
         if (entity == null) {
             throw new Exception("Entity not found!");
         }
-
         entity.setName(student.getName());
         entity.setAge(student.getAge());
         entity.setAddress(student.getAddress());
